@@ -1,0 +1,32 @@
+<%- include('../partials/header'); -%>
+
+    <style>
+
+        .centered
+        {
+            display: flex;
+            justify-content: center;
+        }
+
+
+    </style>
+
+    <main class="centered">
+
+        <div>
+            <div class="centered">
+                <h3> <%= post.title %> </h3>
+            </div>
+        
+            <img src= "data:image/png;base64, <%= post.image.data.toString('base64') %>">
+            
+            <div class="centered">
+                
+            </div>
+
+        </div>
+    </main>        
+
+
+
+<%- include('../partials/footer'); -%>

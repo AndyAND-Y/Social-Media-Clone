@@ -1,0 +1,17 @@
+
+<h1>Formular</h1>
+
+<form method="POST" action="/post/" enctype="multipart/form-data">
+
+    <label> Titlu :</label> <input type="text" name="title" required> <br>
+    <label> Tip animal :</label> <select name="animal" id="animal" required>
+        <option value="Cat"> Cat </option>
+        <option value="Dog"> Dog </option>
+    </select><br>
+    <label> Nume animal :</label> <input type="text" name="name" required> <br>
+    <label> Nume stapan :</label> <input type="text" name="owner" > <br>
+    <label> Descriere Postare :</label>  <input type="text" name="description"> <br>
+    <label> Mood-ul animalului :</label> <input type="text" name="mood"> <br>
+    <Label> Poza animal : </Label> <input id = "imgId" type="file" name="image"> <br> 
+    <input id="idSubmit" type="submit" value="Submit">
+</form>
