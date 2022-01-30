@@ -1,17 +1,208 @@
+<%- include('../partials/header'); -%>      
 
-<h1>Formular</h1>
+        <div class="container d-flex justify-content-center">
+            <div class="row" >
+                
+                <div class="col-sm col-4 ">
+                    <div class="container d-flex justify-content-center m-3" >
+                        <div>
+                            <div class="d-flex justify-content-center">
+                                <div>
+                                    <div class="d-flex justify-content-center mb-3">
+                                        <h3> Post Preview</h3>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <h3 id="titlePreview"> Title </h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <img id= "imagePreview" class="rounded border border-dark mb-3" src="https://wallpapersmug.com/download/1600x900/439490/orange-cat-stare.jpg" height="405" width="720" >
+                                
+                                <div class="container d-flex justify-content-center mb-3">
+                                    
+                                    <div>
+                                        <div class="d-flex justify-content-center">
+                                            <h5 class = "mx-1"id="namePreview">This is {Pet's name} </h5>
+                                            <h5 id="ownerPreview"> and it owner is {owner's name}.</h5>
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <h5 class = "mx-1" id="animalPreview"> It is a cat </h5>
+                                            <h5 id="moodPreview">and now is feeling {mood}.</h5>
+                                        </div>
+                                    </div>    
+                                
+                                </div>
 
-<form method="POST" action="/post/" enctype="multipart/form-data">
+                                <div class="d-flex justify-content-center">
+                                    <p class="h6 text-wrap text-break" id="descriptionPreview" style="width: 80vh;" >Description</p>
+                                </div>
 
-    <label> Titlu :</label> <input type="text" name="title" required> <br>
-    <label> Tip animal :</label> <select name="animal" id="animal" required>
-        <option value="Cat"> Cat </option>
-        <option value="Dog"> Dog </option>
-    </select><br>
-    <label> Nume animal :</label> <input type="text" name="name" required> <br>
-    <label> Nume stapan :</label> <input type="text" name="owner" > <br>
-    <label> Descriere Postare :</label>  <input type="text" name="description"> <br>
-    <label> Mood-ul animalului :</label> <input type="text" name="mood"> <br>
-    <Label> Poza animal : </Label> <input id = "imgId" type="file" name="image"> <br> 
-    <input id="idSubmit" type="submit" value="Submit">
-</form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm col-8">
+                    <div class="container m-3"> 
+                        <div class="d-flex justify-content-center">
+                            <h3>Add new post</h3>
+                        </div>
+                        <form class = "md-form" method="POST" action="/post/" enctype="multipart/form-data">
+
+                            <div class="form-floating mb-3 " >
+                                <input id="titleInput" type="text" class="form-control" id="floatingInput" placeholder="title" name="title" required>
+                                <label for="floatingInput" >Title</label>
+                            </div>
+
+                            <select id="animalInput" class="form-select mb-3" aria-label="Default select example" name="animal" required> 
+                                <option value="cat" selected>🐈 Cat 🐈</option>
+                                <option value="dog">🐕 Dog 🐕 </option>
+                            </select>
+
+                            <div class="form-floating mb-3">
+                                <input id="nameInput" type="text" class="form-control" id="floatingInput" placeholder="title" name="name" required>
+                                <label for="floatingInput" > Pet's Name </label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input id="ownerInput" type="text" class="form-control" id="floatingInput" placeholder="title" name="owner">
+                                <label for="floatingInput" > Owner's Name </label>
+                            </div>
+                            
+                            <div class="form-floating mb-3">
+                                <input id="moodInput" type="text" class="form-control" id="floatingInput" placeholder="happy" name="mood">
+                                <label for="floatingInput">Mood</label>
+                            </div>
+
+                            <div class="mb-3">
+                                <input id = "imageInput" class="form-control form-control-lg" id="formFileLg" type="file" name="image" required>
+                            </div>
+                            
+                            <div class="form-floating mb-3" >
+                                <textarea id= "descriptionInput"class="form-control" placeholder="Description" id="floatingTextarea" name="description" style="height: 20vh;"></textarea>
+                                <label for="floatingTextarea">Description</label>
+                              </div>
+                            
+
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" class="btn bg-primary text-light hoverBtnProp ">Post</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+
+            const inputs = [["title","Title"],["name","This is {Pet's name}"],["mood","."],["owner","."],["animal",""],["description","Description"] ];
+
+            inputs.forEach( e => {
+                
+                const target = e[0];
+                const defvalue = e[1];
+                
+                const tag = document.getElementById(`${target}Input`);
+                
+                if(target === "animal")
+                {   
+
+                    tag.onchange = () => {
+                        const preview = document.getElementById(`${target}Preview`);
+                        const add = getAdd(tag);
+                        preview.innerText= add;
+                    }
+                    return;
+                }
+                
+
+                tag.onkeyup = () => {
+                    const add = getAdd(tag);
+                    const preview = document.getElementById(`${target}Preview`);
+                    preview.innerText = add;
+                }
+                tag.onkeypress = () => {
+                    const add = getAdd(tag);
+                    const preview = document.getElementById(`${target}Preview`);
+                    preview.innerText = add;
+                }
+                                
+            });
+
+            function getAdd(tag)
+            {
+                const target = tag.name;
+                const value = tag.value;
+                let add ="";
+                if(target === "name")
+                {
+                    add = "This is ";
+                    if(value === "")
+                    {
+                        add += "{Pet's name} ";
+                    }
+                    else
+                    {
+                        add = add + value + " ";
+                    }
+                }
+                else if(target === "mood")
+                {   
+                    add = ".";
+                    if(value !== "")
+                    {
+                        add = ` and now is felling ${value}.`;
+                        add = " "+add;
+                    }
+                }
+                else if(target === "title")
+                {
+                    add = "Title";
+                    
+                    if(value !== "")
+                    {
+                        add = value;
+                    }
+                    
+                }
+                else if(target === "owner")
+                {
+                    add = ".";
+                    if(value !== "")
+                    {
+                        add= ` and it's owner is ${value}.`;
+                    }
+                }
+                else if(target === "animal")
+                {
+                    add = `It is a ${value} `;
+                }
+                else if(target === "description")
+                {
+                    if(value !== "") add=value;
+                    else add ="Description";
+                }
+                return add;
+            }
+
+            const image = document.getElementById("imageInput");
+
+            function readRead()
+            {
+                if(this.files && this.files[0])
+                {
+                    const reader = new FileReader();
+                    
+                    reader.addEventListener("load" , (e) => {
+                        document.getElementById("imagePreview").src = e.target.result;
+                    });
+                    reader.readAsDataURL(this.files[0]);
+                }
+            }
+
+            image.addEventListener("change", readRead);
+            
+        </script>
+
+<%- include('../partials/footer'); -%>

@@ -15,7 +15,7 @@ app.use(express.static("views"));
 
 app.use('/post', postRouter);
 
-app.use('/home' , (req,res) =>{
+app.use('/test' , (req,res) =>{
     res.render('Pages/test');
 });
 

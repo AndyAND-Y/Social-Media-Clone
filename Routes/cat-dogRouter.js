@@ -14,6 +14,10 @@ router.get('/' , async (req , res)=>{
     res.send(animals);
 });
 
+router.get('/createPost' , async (req,res)=>{
+    res.render('Pages/createPage');
+})
+
 router.post('/', upload.single('image') , async (req, res) => {
     try
     {   
