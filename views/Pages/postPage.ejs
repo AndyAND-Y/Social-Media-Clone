@@ -1,31 +1,123 @@
 <%- include('../partials/header'); -%>
 
-    <style>
+    <main class="container-fluid" >
 
-        .centered
-        {
-            display: flex;
-            justify-content: center;
-        }
+        <div style="height: 2vh;"></div>
 
+        <div class="d-flex justify-content-center m-3">
+            <h1 class=" display-1" > <%= post.title %> </h1>
+        </div>
 
-    </style>
-
-    <main class="centered">
-
-        <div>
-            <div class="centered">
-                <h3> <%= post.title %> </h3>
-            </div>
-        
-            <img src= "data:image/png;base64, <%= post.image.data.toString('base64') %>">
-            
-            <div class="centered">
+        <div class="d-flex justify-content-center m-3">
                 
+            <div class="d-flex justify-content-center">
+                <img style="height: 80vh; width:65vw;" id= "imagePreview" class="rounded border border-dark mb-3 img-fluid" src="data: <%= post.image.contentType %> ;base64, <%= post.image.data.toString('base64') %> " >
             </div>
+        </div>
+
+        <div class="d-flex justify-content-center m-3">
+            <div  class="container d-flex justify-content-end" style=" width:45vw;"> 
+                <p class="display-8" id="postTime" class="text-wrap blockqoute">Posted 5 years ago.</p>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center m-3" >
+            <h3 class=" display-6">
+                <% if(post.owner !== "") { %>
+                    This is <%= post.name %> and it's owner is <%=post.owner%>.
+                <% } else { %>
+                    This is <%= post.name %>.
+                <%}%>
+                
+            </h3>
+        </div>
+
+        <div class="d-flex justify-content-center m-3"> 
+            <h6 class=" display-6">
+                <% if(post.mood !== "") { %>
+                    It is a <%= post.animal %> and now is feeling <%= post.mood%>.
+                <%} else {%>
+                    It is a <%= post.animal%>.
+                <%}%>
+            </h6>
+        </div>
+
+        <div class="d-flex justify-content-center m-3 blockquote">
+            <p class="display-8">
+                <%= post.description %>
+            </p>
+        </div>
+
+        <div class="d-flex justify-content-center m-3">
+
+                <div class="m-3">
+                    <form class="md-form" method="POST" action="/post/single/">
+                        <button type="submit" class="btn bg-primary text-light hoverBtnProp" style="height: 7vh; width: 10vh;">Delete</button>
+                      
+                        <div style="display: none;">
+                            <input value="delete" name="method">
+                        </div>
+                        <div style="display: none;">
+                            <input value="<%= post._id %>" name="id">
+                        </div>
+
+                    </form>
+                </div>
+                <div class="m-3">
+                    <button id="editBtn" type="submit" class="btn bg-primary text-light hoverBtnProp" style="height: 7vh; width: 10vh;">Edit</button>
+                </div>
 
         </div>
-    </main>        
+
+        <div style="height: 2vh;"></div>
+
+    </main>
+
+    <script>
+        
+        const oneDayTime = 1000 * 3600 * 24;
+        let postTime = "<%= post.addDate %>";
+
+        postTime = Number( "<%= post.addDate %>" );
+        
+        const days = Math.floor((Date.now() - postTime) / oneDayTime);
+        const hours  = Math.floor((Date.now() - postTime) * 24 / oneDayTime);
+        const minutes = Math.floor((Date.now() - postTime) * 24 * 60 / oneDayTime);
+        const seconds = Math.floor((Date.now() - postTime) * 24 * 3600 / oneDayTime);
+
+        let result = "Posted ";
+
+        if(days >=1) 
+        {       
+            if(days === 1) result = result + `${days} day ago.`;
+            else result = result + `${days} days ago.`;
+        }
+        else if(hours>=1)
+        {
+            if(hours === 1) result = result + `${hours} hours ago.`;
+            else result = result + `${hours} hours ago.`;
+        }
+        else if(minutes>=1)
+        {
+            if(minutes === 1) result = result + `${minutes} minute ago.`;
+            else result = result + `${minutes} minutes ago.`;
+        }
+        else
+        {
+            if(seconds === 1) result = result + `${seconds} second ago.`;
+            else result = result + `${seconds} seconds ago.`;
+        }
+
+        document.getElementById("postTime").innerText = result;
+        
+
+        const editBtn = document.getElementById("editBtn");
+        editBtn.onclick = () => {
+            
+            location.replace('http://localhost:3000/post/single/editPage/<%=post._id%>');
+        }
+
+    </script>
 
 
 

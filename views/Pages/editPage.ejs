@@ -1,0 +1,69 @@
+<%- include('../partials/header'); -%>      
+
+        <main class="container-fluid d-flex justify-content-center ">
+            
+            <div style="height: 2vh;"></div>
+            <div class="row  d-flex justify-content-center">
+                
+                <div class="col-md">
+                    <div class="container-fluid mt-3"> 
+                        <div class="d-flex justify-content-center">
+                            <h3 class="display-2 text-primary">Edit Post</h3>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <form class = "md-form" method="POST" action="/post/single/" enctype="multipart/form-data">
+
+                                <div class="form-floating mb-3" >
+                                    <input id="titleInput" type="text" class="form-control" id="floatingInput" placeholder="title" name="title" required value="<%= post.title %>">
+                                    <label for="floatingInput" >Title</label>
+                                </div>
+
+                                <div class="form-floating mb-3" >
+                                    <input id="animalInput" type="text" class="form-control" id="floatingInput" placeholder="animal" name="animal" required value="<%= post.animal %>">
+                                    <label for="floatingInput" >Animal</label>
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <input id="nameInput" type="text" class="form-control" id="floatingInput" placeholder="name" name="name" required value="<%= post.name %>">
+                                    <label for="floatingInput" > Pet's Name </label>
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <input id="ownerInput" type="text" class="form-control" id="floatingInput" placeholder="title" name="owner" required value="<%= post.owner %>">
+                                    <label for="floatingInput" > Owner's Name </label>
+                                </div>
+                                
+                                <div class="form-floating mb-3">
+                                    <input id="moodInput" type="text" class="form-control" id="floatingInput" placeholder="happy" name="mood" required value="<%= post.mood %>">
+                                    <label for="floatingInput">Mood</label>
+                                </div>
+
+                                <div class="mb-3">
+                                    <input id = "imageInput" class="form-control form-control-lg" id="formFileLg" type="file" name="image">
+                                </div>
+                                
+                                <div class="form-floating mb-3" >
+                                    <textarea id= "descriptionInput"class="form-control" placeholder="Description" id="floatingTextarea" name="description" style="height: 20vh;" required> <%= post.description %> </textarea>
+                                    <label for="floatingTextarea">Description</label>
+                                </div>
+                                
+                                <div style="display: none;">
+                                    <input value="patch" name="method">
+                                </div>
+                                
+                                <div style="display: none;">
+                                    <input value="<%= post._id %>" name="id">
+                                </div>
+
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit" class="btn bg-primary text-light hoverBtnProp ">Edit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="height: 2vh;"></div>
+        </main>
+
+<%- include('../partials/footer'); -%>

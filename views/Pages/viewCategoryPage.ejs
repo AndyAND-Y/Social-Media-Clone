@@ -1,0 +1,40 @@
+<%- include('../partials/header'); -%>
+
+		<main class="container-fluid">
+            <div style="height: 2vh;"></div>
+            <div>
+                <div class="container-fluid d-flex justify-content-center">
+                    <h1 class="display-1 text-wrap text-primary">Posts</h1>
+                </div>
+                
+                <hr
+                class="bg-primary border-3 border-top border-primary mt-3"
+                style="width: 100vw"
+	            />
+
+                <div class="container d-flex justify-content-center">
+                    <div class="row row-cols-1 row-cols-sm-3 row-cols-md-3 g-4">
+                        
+                        <% posts.forEach( (post) => { %>
+                            
+                            <div class="card border-primary m-3 border-primary shadow-lg p-3 mb-5 bg-light rounded" style="width: 18rem;">
+                                <div class="m-1">
+                                    <img src="data: <%= post.image.contentType %> ;base64, <%= post.image.data.toString('base64') %>" class="card-img-top border border-primary" alt="trebuia o poza aici" style="height: 10rem;" >
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title"> <%= post.title %> </h5>
+                                    <p class="card-text"> Hey, here is a <%= post.animal %> that is feeling <%= post.mood %> </p>
+                                    <a href="/post/single/<%= post._id %>" class="btn btn-primary">See Post</a>
+                                </div>
+                              </div>
+
+                        <%})%>
+                    </div>
+                </div>
+
+            </div>
+
+            <div style="height: 2vh;"></div>
+		</main>
+
+<%- include('../partials/footer'); -%>

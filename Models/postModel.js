@@ -21,19 +21,22 @@ const postSchema = new Schema({
     owner:
     {
         type:String,
+        required: true,
     },
     addDate:
     {
-        type: Date,
+        type: Number,
         default : Date.now(),
     },
     description:
     {
         type: String,
+        required: true,
     },
     mood:
     {
         type: String,
+        required: true,
     },
     image:
     {

@@ -1,208 +1,115 @@
 <%- include('../partials/header'); -%>      
 
-        <div class="container d-flex justify-content-center">
-            <div class="row" >
+        <main class="container-fluid d-flex justify-content-center ">
+            
+            <div style="height: 2vh;"></div>
+            <div class="row d-flex justify-content-center">
                 
-                <div class="col-sm col-4 ">
-                    <div class="container d-flex justify-content-center m-3" >
+                <div class="col-md">
+                    <div class="container-fluid d-flex justify-content-center mt-3" >
                         <div>
                             <div class="d-flex justify-content-center">
                                 <div>
                                     <div class="d-flex justify-content-center mb-3">
-                                        <h3> Post Preview</h3>
+                                        <h3 class="display-2"> Post Preview</h3>
                                     </div>
                                     <div class="d-flex justify-content-center">
-                                        <h3 id="titlePreview"> Title </h3>
+                                        <h3 id="titlePreview" class="display-4"> Title </h3>
                                     </div>
                                 </div>
                             </div>
-                            <div class="">
-                                <img id= "imagePreview" class="rounded border border-dark mb-3" src="https://wallpapersmug.com/download/1600x900/439490/orange-cat-stare.jpg" height="405" width="720" >
-                                
-                                <div class="container d-flex justify-content-center mb-3">
+                            <div class="d-flex justify-content-center mb-3">
+                                <div>
+                                    <div class="d-flex justify-content-center mb-3">                                    
+                                        <img id= "imagePreview" class="rounded border border-dark mb-3 img-fluid" src="data:image/jpeg;base64,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">
+                                    </div>
+                                    <div class="container d-flex justify-content-center mb-3">
+                                        
+                                        <div>
+                                            <div class="d-flex justify-content-center">
+                                                <h5 class = "mx-1 display-8" id="namePreview">This is {Pet's name} </h5>
+                                                <h5 class = "display-8" id="ownerPreview"> and it's owner is {owner's name}.</h5>
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <h5 class = "mx-1 display-8" id="animalPreview"> It is a cat </h5>
+                                                <h5 class = "display-8" id="moodPreview">and now is feeling {mood}.</h5>
+                                            </div>
+                                        </div>    
                                     
-                                    <div>
-                                        <div class="d-flex justify-content-center">
-                                            <h5 class = "mx-1"id="namePreview">This is {Pet's name} </h5>
-                                            <h5 id="ownerPreview"> and it owner is {owner's name}.</h5>
-                                        </div>
-                                        <div class="d-flex justify-content-center">
-                                            <h5 class = "mx-1" id="animalPreview"> It is a cat </h5>
-                                            <h5 id="moodPreview">and now is feeling {mood}.</h5>
-                                        </div>
-                                    </div>    
-                                
-                                </div>
+                                    </div>
 
-                                <div class="d-flex justify-content-center">
-                                    <p class="h6 text-wrap text-break" id="descriptionPreview" style="width: 80vh;" >Description</p>
+                                    <div class="d-flex justify-content-center">
+                                        <p class="h6 text-wrap text-break blockquote" id="descriptionPreview" style="width: 80vh;" >Description</p>
+                                    </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm col-8">
-                    <div class="container m-3"> 
+                <div class="col-md">
+                    <div class="container-fluid mt-3"> 
                         <div class="d-flex justify-content-center">
-                            <h3>Add new post</h3>
+                            <h3 class="display-2">Add new post</h3>
                         </div>
-                        <form class = "md-form" method="POST" action="/post/" enctype="multipart/form-data">
+                        <div class="d-flex justify-content-center">
+                            <form class = "md-form" method="POST" action="/post/" enctype="multipart/form-data">
 
-                            <div class="form-floating mb-3 " >
-                                <input id="titleInput" type="text" class="form-control" id="floatingInput" placeholder="title" name="title" required>
-                                <label for="floatingInput" >Title</label>
-                            </div>
+                                <div class="form-floating mb-3" >
+                                    <input id="titleInput" type="text" class="form-control" id="floatingInput" placeholder="title" name="title" required>
+                                    <label for="floatingInput" >Title</label>
+                                </div>
 
-                            <select id="animalInput" class="form-select mb-3" aria-label="Default select example" name="animal" required> 
-                                <option value="cat" selected>🐈 Cat 🐈</option>
-                                <option value="dog">🐕 Dog 🐕 </option>
-                            </select>
+                                <div class="form-floating mb-3" >
+                                    <input id="animalInput" type="text" class="form-control" id="floatingInput" placeholder="animal" name="animal" required>
+                                    <label for="floatingInput" >Animal</label>
+                                </div>
 
-                            <div class="form-floating mb-3">
-                                <input id="nameInput" type="text" class="form-control" id="floatingInput" placeholder="title" name="name" required>
-                                <label for="floatingInput" > Pet's Name </label>
-                            </div>
+                                <div class="form-floating mb-3">
+                                    <input id="nameInput" type="text" class="form-control" id="floatingInput" placeholder="name" name="name" required>
+                                    <label for="floatingInput" > Pet's Name </label>
+                                </div>
 
-                            <div class="form-floating mb-3">
-                                <input id="ownerInput" type="text" class="form-control" id="floatingInput" placeholder="title" name="owner">
-                                <label for="floatingInput" > Owner's Name </label>
-                            </div>
-                            
-                            <div class="form-floating mb-3">
-                                <input id="moodInput" type="text" class="form-control" id="floatingInput" placeholder="happy" name="mood">
-                                <label for="floatingInput">Mood</label>
-                            </div>
+                                <div class="form-floating mb-3">
+                                    <input id="ownerInput" type="text" class="form-control" id="floatingInput" placeholder="title" name="owner">
+                                    <label for="floatingInput" > Owner's Name </label>
+                                </div>
+                                
+                                <div class="form-floating mb-3">
+                                    <input id="moodInput" type="text" class="form-control" id="floatingInput" placeholder="happy" name="mood">
+                                    <label for="floatingInput">Mood</label>
+                                </div>
 
-                            <div class="mb-3">
-                                <input id = "imageInput" class="form-control form-control-lg" id="formFileLg" type="file" name="image" required>
-                            </div>
-                            
-                            <div class="form-floating mb-3" >
-                                <textarea id= "descriptionInput"class="form-control" placeholder="Description" id="floatingTextarea" name="description" style="height: 20vh;"></textarea>
-                                <label for="floatingTextarea">Description</label>
-                              </div>
-                            
+                                <div class="mb-3">
+                                    <input id = "imageInput" class="form-control form-control-lg" id="formFileLg" type="file" name="image" required>
+                                </div>
+                                
+                                <div class="form-floating mb-3" >
+                                    <textarea id= "descriptionInput"class="form-control" placeholder="Description" id="floatingTextarea" name="description" style="height: 20vh;"></textarea>
+                                    <label for="floatingTextarea">Description</label>
+                                </div>
+                                
 
-                            <div class="d-flex justify-content-center">
-                                <button type="submit" class="btn bg-primary text-light hoverBtnProp ">Post</button>
-                            </div>
-                        </form>
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit" class="btn bg-primary text-light hoverBtnProp ">Post</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+            <div style="height: 2vh;"></div>
+        </main>
 
-
+        <script type= "text/javascript" src= "../Scripts/imagePreviewSetup.js"> </script>
+		<script type= "text/javascript" src= "../Scripts/imageResizeSetup.js"> </script>
+        <script type= "text/javascript" src= "../Scripts/formPreviewSetup.js"> </script>
+        
         <script>
-
-            const inputs = [["title","Title"],["name","This is {Pet's name}"],["mood","."],["owner","."],["animal",""],["description","Description"] ];
-
-            inputs.forEach( e => {
-                
-                const target = e[0];
-                const defvalue = e[1];
-                
-                const tag = document.getElementById(`${target}Input`);
-                
-                if(target === "animal")
-                {   
-
-                    tag.onchange = () => {
-                        const preview = document.getElementById(`${target}Preview`);
-                        const add = getAdd(tag);
-                        preview.innerText= add;
-                    }
-                    return;
-                }
-                
-
-                tag.onkeyup = () => {
-                    const add = getAdd(tag);
-                    const preview = document.getElementById(`${target}Preview`);
-                    preview.innerText = add;
-                }
-                tag.onkeypress = () => {
-                    const add = getAdd(tag);
-                    const preview = document.getElementById(`${target}Preview`);
-                    preview.innerText = add;
-                }
-                                
-            });
-
-            function getAdd(tag)
-            {
-                const target = tag.name;
-                const value = tag.value;
-                let add ="";
-                if(target === "name")
-                {
-                    add = "This is ";
-                    if(value === "")
-                    {
-                        add += "{Pet's name} ";
-                    }
-                    else
-                    {
-                        add = add + value + " ";
-                    }
-                }
-                else if(target === "mood")
-                {   
-                    add = ".";
-                    if(value !== "")
-                    {
-                        add = ` and now is felling ${value}.`;
-                        add = " "+add;
-                    }
-                }
-                else if(target === "title")
-                {
-                    add = "Title";
-                    
-                    if(value !== "")
-                    {
-                        add = value;
-                    }
-                    
-                }
-                else if(target === "owner")
-                {
-                    add = ".";
-                    if(value !== "")
-                    {
-                        add= ` and it's owner is ${value}.`;
-                    }
-                }
-                else if(target === "animal")
-                {
-                    add = `It is a ${value} `;
-                }
-                else if(target === "description")
-                {
-                    if(value !== "") add=value;
-                    else add ="Description";
-                }
-                return add;
-            }
-
-            const image = document.getElementById("imageInput");
-
-            function readRead()
-            {
-                if(this.files && this.files[0])
-                {
-                    const reader = new FileReader();
-                    
-                    reader.addEventListener("load" , (e) => {
-                        document.getElementById("imagePreview").src = e.target.result;
-                    });
-                    reader.readAsDataURL(this.files[0]);
-                }
-            }
-
-            image.addEventListener("change", readRead);
             
+            imagePreviewSetup();
+            imageResizeSetup();
+            formPreviewSetup();
+                        
         </script>
 
 <%- include('../partials/footer'); -%>
