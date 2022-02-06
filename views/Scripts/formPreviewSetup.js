@@ -1,5 +1,8 @@
 function formPreviewSetup() {
-    const inputs = [["title", "Title"], ["name", "This is {Pet's name}"], ["mood", "."], ["owner", "."], ["animal", ""], ["description", "Description"]];
+    const inputs = [["title", "Title"], ["name", "This is {Pet's name}"], ["mood", "."], ["owner", "."], ["animal", ""], ["description", "Description"]]; 
+    /*
+        to be modified
+    */
 
     inputs.forEach(e => {
 
