@@ -1,8 +1,5 @@
 function formPreviewSetup() {
     const inputs = [["title", "Title"], ["name", "This is {Pet's name}"], ["mood", "."], ["owner", "."], ["animal", ""], ["description", "Description"]]; 
-    /*
-        to be modified
-    */
 
     inputs.forEach(e => {
 
@@ -38,7 +35,7 @@ function formPreviewSetup() {
             }
         }
         else if (target === "mood") {
-            add = ".";
+            add = "and now is felling {mood}.";
             if (value !== "") {
                 add = ` and now is felling ${value}.`;
                 add = " " + add;
@@ -53,13 +50,16 @@ function formPreviewSetup() {
 
         }
         else if (target === "owner") {
-            add = ".";
+            add = "and it's owner is {owner's name}.";
             if (value !== "") {
                 add = ` and it's owner is ${value}.`;
             }
         }
         else if (target === "animal") {
-            add = `It is a ${value} `;
+            add = "It is a {animal type}";
+            if(value !== ""){
+                add = `It is a ${value}`;
+            }
         }
         else if (target === "description") {
             if (value !== "") add = value;
